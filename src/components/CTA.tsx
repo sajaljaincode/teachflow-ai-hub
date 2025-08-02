@@ -1,8 +1,25 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, CheckCircle } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const CTA = () => {
+  const { toast } = useToast();
+
+  const handleStartTrial = () => {
+    toast({
+      title: "Free Trial Starting!",
+      description: "Your 14-day journey with TeachFlow AI begins now!",
+    });
+  };
+
+  const handleScheduleDemo = () => {
+    toast({
+      title: "Demo Scheduled!",
+      description: "We'll be in touch soon to show you TeachFlow AI in action.",
+    });
+  };
+
   const benefits = [
     "Start with a free 14-day trial",
     "No credit card required",
@@ -31,11 +48,11 @@ const CTA = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button variant="cta" size="xl" className="group">
+              <Button variant="cta" size="xl" className="group" onClick={handleStartTrial}>
                 Start Your Free Trial
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button variant="outline" size="xl">
+              <Button variant="outline" size="xl" onClick={handleScheduleDemo}>
                 Schedule a Demo
               </Button>
             </div>

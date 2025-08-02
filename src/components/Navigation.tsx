@@ -1,9 +1,25 @@
 import { Button } from "@/components/ui/button";
 import { BookOpen, Menu, X } from "lucide-react";
 import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { toast } = useToast();
+
+  const handleSignIn = () => {
+    toast({
+      title: "Sign In",
+      description: "Authentication coming soon! We're building something amazing.",
+    });
+  };
+
+  const handleGetStarted = () => {
+    toast({
+      title: "Get Started!",
+      description: "Ready to transform your teaching experience!",
+    });
+  };
 
   const navItems = [
     { name: "Features", href: "#features" },
@@ -39,8 +55,8 @@ const Navigation = () => {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center space-x-3">
-            <Button variant="ghost">Sign In</Button>
-            <Button variant="default">Get Started</Button>
+            <Button variant="ghost" onClick={handleSignIn}>Sign In</Button>
+            <Button variant="default" onClick={handleGetStarted}>Get Started</Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -70,8 +86,8 @@ const Navigation = () => {
                 </a>
               ))}
               <div className="pt-4 flex flex-col space-y-2">
-                <Button variant="ghost" className="justify-start">Sign In</Button>
-                <Button variant="default" className="justify-start">Get Started</Button>
+                <Button variant="ghost" className="justify-start" onClick={handleSignIn}>Sign In</Button>
+                <Button variant="default" className="justify-start" onClick={handleGetStarted}>Get Started</Button>
               </div>
             </div>
           </div>

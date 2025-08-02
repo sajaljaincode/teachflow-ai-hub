@@ -1,8 +1,25 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BookOpen, Brain, Users, Zap } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 import heroImage from "@/assets/hero-image.jpg";
 
 const Hero = () => {
+  const { toast } = useToast();
+
+  const handleGetStarted = () => {
+    toast({
+      title: "Getting Started!",
+      description: "Welcome to TeachFlow AI! Your teaching assistant is ready.",
+    });
+  };
+
+  const handleWatchDemo = () => {
+    toast({
+      title: "Demo Coming Soon!",
+      description: "We're preparing an amazing demo for you. Stay tuned!",
+    });
+  };
+
   return (
     <section className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/5 flex items-center justify-center px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -28,11 +45,11 @@ const Hero = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="cta" size="xl" className="group">
+              <Button variant="cta" size="xl" className="group" onClick={handleGetStarted}>
                 Start Teaching Smarter
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button variant="outline" size="xl">
+              <Button variant="outline" size="xl" onClick={handleWatchDemo}>
                 Watch Demo
               </Button>
             </div>
